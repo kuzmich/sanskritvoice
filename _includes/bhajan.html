@@ -1,0 +1,5 @@
+    <article>
+      <h3>{{ include.title }}</h3>
+      {% assign right_cbrace = '}' %}
+      {{ include.text | replace: '{', '<span class="accord hidden">' | replace: right_cbrace, '</span>' }}
+    </article>
