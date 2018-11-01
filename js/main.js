@@ -16,6 +16,7 @@ $(document).ready(function() {
       var player = document.getElementById('player');
       var a = $(this);
 
+      $(player).removeClass('hidden');
       player.src = a.data('audioDownloadUrl');
       player.play();
     });
