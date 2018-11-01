@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $('#toggle-accords').on('click', function(event){
-        event.preventDefault();   
+        event.preventDefault();
         $('.accord').toggleClass('hidden');
 
         var a = $(this);
@@ -8,5 +8,15 @@ $(document).ready(function() {
             a.text('показать аккорды')
         else
             a.text('скрыть аккорды');
+    });
+
+    $('a.audio-link').on('click', function(event) {
+      event.preventDefault();
+
+      var player = document.getElementById('player');
+      var a = $(this);
+
+      player.src = a.data('audioDownloadUrl');
+      player.play();
     });
 });

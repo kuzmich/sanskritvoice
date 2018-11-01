@@ -9,8 +9,15 @@ layout: base
     <section>
       <h2>{{ cat.name }} баджаны</h2>
       {% for bhajan in category_bhajans %}
-        {% include bhajan.html title=bhajan.title text=bhajan.output %}
+        {% include bhajan.html title=bhajan.title
+                               text=bhajan.output
+                               audio=bhajan.audio
+                               slug=bhajan.slug %}
       {% endfor %}
     </section>
   {% endif %}
 {% endfor %}
+
+<audio id="player" controls>
+  <p>Ваш браузер не поддерживает HTML5 аудио.</p>
+</audio>

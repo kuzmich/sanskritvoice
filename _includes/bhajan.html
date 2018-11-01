@@ -2,4 +2,22 @@
       <h3>{{ include.title }}</h3>
       {% assign right_cbrace = '}' %}
       {{ include.text | replace: '{', '<span class="accord hidden">' | replace: right_cbrace, '</span>' }}
+      {% if include.audio.size > 0 %}
+        <strong>Слушать:</strong>
+        <ul>
+          {% for audio in include.audio %}
+            {% assign fid = audio.url |
+                            remove:"https://drive.google.com/file/d/" |
+                            remove:"/view?usp=sharing" %}
+            <li>
+              <a href="{{ audio.url }}"
+                 id="audio-link-{{ include.slug }}-{{ forloop.index }}"
+                 class="audio-link"
+                 data-audio-download-url="https://drive.google.com/uc?export=download&id={{ fid }}">
+                {{ audio.name }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
     </article>
