@@ -105,12 +105,17 @@ body {
     color: white;
     background-color: rgb(39, 115, 190);
     margin: 0 0.2em;
-    padding: 0em 0.2em;
+    padding: 0 0.2em;
     font-size: 0.9em;
 }
 #player {
   position: fixed;
   bottom: 0;
+}
+
+h3 > a {
+  text-decoration: none;
+  color: #222;
 }
 
 
