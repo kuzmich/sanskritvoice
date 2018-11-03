@@ -292,4 +292,23 @@ a.local-anchor {
     h3 {
         page-break-after: avoid;
     }
+
+    /* оборачиваем аккорды в {}, напр. {Dm} */
+    span.accord {
+      margin: 0;
+      padding: 0;
+    }
+    span.accord::before {
+      content: " {";
+    }
+    span.accord::after {
+      content: "} ";
+    }
+
+    /* убираем навигацию, ссылки на баджаны и ссылки на аудио */
+    body > header,
+    a.local-anchor,
+    article > section {
+      display: none;
+    }
 }
