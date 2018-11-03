@@ -1,13 +1,27 @@
 ---
 layout: base
 ---
-<a href="" id="toggle-accords">показать аккорды</a>
+<nav>
+  <h2>Перейти к:</h2>
+  <ul>
+    {% for cat in site.data.categories %}
+      {% assign category_bhajans = site.bhajans | where: 'category', cat.name %}
+      {% if category_bhajans.size > 0 %}
+        <li><a href="#{{ cat.slug }}">{{ cat.name }}-баджанам</a>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
+
+<h3>Настройки:</h3>
+<input type="checkbox" id="toggle-accords">
+<label for="toggle-accords">показать аккорды</label>
 
 {% for cat in site.data.categories %}
   {% assign category_bhajans = site.bhajans | where: 'category', cat.name %}
   {% if category_bhajans.size > 0 %}
     <section>
-      <h2>{{ cat.name }} баджаны</h2>
+      <h2 id="{{ cat.slug }}">{{ cat.name }}-баджаны</h2>
       {% for bhajan in category_bhajans %}
         {% include bhajan.html title=bhajan.title
                                text=bhajan.output

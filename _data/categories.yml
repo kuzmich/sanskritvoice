@@ -1,5 +1,10 @@
 - name: Ганеша
+  slug: ganesha
 - name: Шива
+  slug: shiva
 - name: Гуру
+  slug: guru
 - name: Деви
+  slug: devi
 - name: Кришна
+  slug: krishna

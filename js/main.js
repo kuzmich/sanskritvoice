@@ -1,23 +1,19 @@
 $(document).ready(function() {
-    $('#toggle-accords').on('click', function(event){
-        event.preventDefault();
-        $('.accord').toggleClass('hidden');
-
-        var a = $(this);
-        if (a.text().slice(0, 6) == 'скрыть')
-            a.text('показать аккорды')
-        else
-            a.text('скрыть аккорды');
+    // показать/скрыть аккорды
+    $('#toggle-accords').on('click', function (event) {
+        $('.accord').toggleClass('hidden', !this.checked);
     });
 
+    // показать и включить плеер
     $('a.audio-link').on('click', function(event) {
       event.preventDefault();
 
       var player = document.getElementById('player');
-      var a = $(this);
+      var audioLink = $(this);
 
       $(player).removeClass('hidden');
-      player.src = a.data('audioDownloadUrl');
+
+      player.src = audioLink.data('audioDownloadUrl');
       player.play();
     });
 });

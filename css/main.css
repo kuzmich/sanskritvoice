@@ -101,6 +101,7 @@ body {
     padding: 1em;
     padding-bottom: 3em;
 }
+
 .accord {
     color: white;
     background-color: rgb(39, 115, 190);
@@ -108,29 +109,17 @@ body {
     padding: 0 0.2em;
     font-size: 0.9em;
 }
+
 #player {
   position: fixed;
   bottom: 0;
 }
 
-h3 > a {
+/* ссылки на баджаны */
+a.local-anchor {
   text-decoration: none;
   color: #222;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ==========================================================================
    Helper classes
