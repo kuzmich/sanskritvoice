@@ -1,0 +1,14 @@
+---
+layout: base
+---
+  <h3>Настройки:</h3>
+  <input type="checkbox" id="toggle-accords">
+  <label for="toggle-accords">показать аккорды</label>
+
+{%- for bhajan_slug in page.bhajans -%}
+  {% assign bhajan = site.bhajans | where: "slug", bhajan_slug | first %}
+  {%- include bhajan.html title=bhajan.title
+                          text=bhajan.output
+                          audio=bhajan.audio
+                          slug=bhajan.slug -%}
+{% endfor %}

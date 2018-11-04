@@ -1,2 +1,5 @@
 collections:
   bhajans:
+  ak:
+    output: true
+    # permalink: /:collection/:name
