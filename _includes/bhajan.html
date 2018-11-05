@@ -2,10 +2,10 @@
 {%- assign bid=include.slug | abs %}
     <article>
       <h3 id="{{ bid }}">
-        {{ bid}}. {{ include.title }}
+        #{{ bid }}. {{ include.title }}
         <a href="#{{ bid }}" class="local-anchor">&para;</a>
       </h3>
-      {{ include.text | replace: '{', '<span class="accord hidden">' | replace: right_cbrace, '</span>' }}
+      {{ include.text | replace: '{', '<span class="accord">' | replace: right_cbrace, '</span>' }}
 
       {%- if include.audio.size > 0 %}
         <section>
