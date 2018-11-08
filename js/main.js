@@ -1,19 +1,19 @@
 function showAccords() {
-    $('#accord-styles').remove();
+    $('#hide-accords-style').remove();
 }
 
 function hideAccords() {
     $('head').append(
-      '<style id="accord-styles">.accord {display: none;}</style>'
+      '<style id="hide-accords-style">.accord {display: none;}</style>'
     );
 }
 
-function saveSettings() {
+function savePrefs() {
     var showAccs = document.getElementById('toggle-accords').checked ? '1' : '0';
     localStorage.setItem('showAccords', showAccs);
 }
 
-function loadSettings() {
+function loadPrefs() {
     var showAccs = localStorage.getItem('showAccords') === '1';
     if (showAccs)
         showAccords();
@@ -21,7 +21,7 @@ function loadSettings() {
 }
 
 $(document).ready(function() {
-    loadSettings();
+    loadPrefs();
 
     // показать/скрыть аккорды
     $('#toggle-accords').on('click', function (event) {
@@ -30,7 +30,7 @@ $(document).ready(function() {
         } else {
           hideAccords();
         }
-        saveSettings();
+        savePrefs();
     });
 
     // показать и включить плеер

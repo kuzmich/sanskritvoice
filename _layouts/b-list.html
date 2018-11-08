@@ -1,9 +1,7 @@
 ---
 layout: base
 ---
-  <h3>Настройки:</h3>
-  <input type="checkbox" id="toggle-accords">
-  <label for="toggle-accords">показать аккорды</label>
+{% include prefs.html %}
 
 {%- for bhajan_slug in page.bhajans -%}
   {% assign bhajan = site.bhajans | where: "slug", bhajan_slug | first %}
