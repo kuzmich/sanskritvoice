@@ -1,0 +1,24 @@
+/* AUTHOR */
+
+  Name: Alexey Kuzminich
+  Roles: developer, designer, musician
+  Location: Irkutsk, Russia
+  Site: github.com/kuzmich
+  Telegram: @Maxc4m
+
+/* SITE */
+
+  Host: GitHub Pages
+  File storage: Google Drive
+  CMS (static site generator): Jekyll
+  Standards: HTML5, CSS
+  Components: HTML5 Boilerplate, jQuery
+  Software: Sublime Text (Fira Code, Material Theme, Vintage Mode)
+
+  Source Code: https://github.com/kuzmich/sanskritvoice
+
+/* THANKS */
+
+  To Sri Sri Ravi Shankar and to all who perform bhajans
+
+
