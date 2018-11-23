@@ -100,6 +100,11 @@ textarea {
 body {
     padding: 1em;
     padding-bottom: 3em;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+section > h2 {
+    color: #ff8400;
 }
 
 .accord {
