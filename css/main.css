@@ -98,9 +98,40 @@ textarea {
    ========================================================================== */
 
 body {
-    padding: 1em;
-    padding-bottom: 3em;
     font-family: Helvetica, Arial, sans-serif;
+}
+
+.header {
+    background-color: #f7f6f3;
+    padding: 1em;
+}
+
+.header h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.header h1 + p {
+    margin-top: 0;
+}
+
+.header ul {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+.header li {
+    margin-bottom: 0.25em;
+}
+
+.prefs {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.content {
+    padding: 0 1em 3em 1em;
 }
 
 section > h2 {

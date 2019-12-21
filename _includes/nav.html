@@ -1,10 +1,9 @@
     <nav>
-      <h2>Перейти к:</h2>
       <ul>
         {%- for cat in site.data.categories -%}
           {%- assign category_bhajans = site.bhajans | where: 'category', cat.name -%}
           {% if category_bhajans.size > 0 %}
-            <li><a href="#{{ cat.slug }}">{{ cat.name }}-баджанам</a>
+            <li><a href="#{{ cat.slug }}">{{ cat.name }}-баджаны</a>
           {%- endif -%}
         {% endfor %}
       </ul>
