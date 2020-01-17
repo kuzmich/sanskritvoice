@@ -3,13 +3,15 @@
     <article>
       <h3 id="{{ bid }}">
         {{ bid }}. {{ include.title }}
-        <a href="#{{ bid }}" class="local-anchor">&para;</a>
+        {% comment %}<a href="#{{ bid }}" class="local-anchor">&para;</a>{% endcomment %}
       </h3>
       {{ include.text | replace: '{', '<span class="accord">' | replace: right_cbrace, '</span>' }}
 
-      {%- if include.audio.size > 0 %}
+      {%- if include.audio.size > 0 or include.video.size > 0 %}
+        <details>
+          <summary>Слушать</summary>
         <section>
-          <strong>Слушать:</strong>
+          <!-- <strong>Слушать:</strong> -->
           <ul>
             {%- for audio in include.audio -%}
               {% assign fid = audio.url |
@@ -24,6 +26,10 @@
               </li>
             {%- endfor %}
           </ul>
+          {%- for video in include.video -%}
+            <lite-youtube videoid="{{ video.ytid }}"></lite-youtube>
+          {%- endfor %}
         </section>
+        </details>
       {%- endif %}
     </article>
