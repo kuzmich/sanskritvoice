@@ -1,0 +1,24 @@
+ @font-face {
+    font-family: 'Art of Living Script';
+    src: url('../fonts/gen/artofliving_script_regular.woff') format('woff');
+    font-weight: 500;
+  }
+
+ /* @font-face {
+    font-family: 'Art of Living Script';
+    src: url('../fonts/gen/artofliving_script_textured.woff') format('woff');
+    font-weight: 600;
+  } */
+
+  /* @font-face {
+      font-family: 'Certa Sans';
+      src: url('../fonts/gen/certa_sans_extra_light.woff') format('woff');
+      font-weight: 200;
+  } */
+
+  @font-face {
+      font-family: 'Certa Sans';
+      src: url('../fonts/gen/certa_sans_light.woff') format('woff');
+      font-weight: 300;
+  }
+

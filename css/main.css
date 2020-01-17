@@ -98,7 +98,9 @@ textarea {
    ========================================================================== */
 
 body {
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Certa Sans', Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 1.1em;
 }
 
 .header {
@@ -107,12 +109,17 @@ body {
 }
 
 .header h1 {
-    margin-top: 0;
+    margin-top: 0.5em;
     margin-bottom: 0;
+    font-family: 'Art of Living Script', serif;
+    font-weight: 500;
+    font-size: 3em;
+    line-height: 0.8;
+    color: #ff8400;
 }
 
 .header h1 + p {
-    margin-top: 0;
+    margin-top: 0.5em;
 }
 
 .header ul {
@@ -126,7 +133,7 @@ body {
 }
 
 .prefs {
-    margin-top: 1.5em;
+    margin-top: 1.75em;
     margin-bottom: 0.5em;
 }
 
@@ -136,6 +143,22 @@ body {
 
 section > h2 {
     color: #ff8400;
+}
+
+/* уменьшим расстояние между названием баджаны и текстом */
+article > h3 {
+    margin-bottom: 0.5em;
+}
+article p:nth-of-type(1) {
+    margin-top: 0.5em;
+}
+
+details {
+    background-color: #f7f6f3;
+    padding: 0.5em;
+}
+summary {
+    background-color: #f7f6f3;
 }
 
 .accord {
