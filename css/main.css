@@ -266,8 +266,19 @@ a.local-anchor {
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
+@media only screen and (min-width: 45em) {
     /* Style adjustments for viewports that meet the condition */
+    body {
+        width: 38em;
+        margin: 0 auto;
+        background-color: #f7f6f3;
+    }
+    main {
+        background-color: white;
+    }
+    .header {
+        background-color: white;
+    }
 }
 
 @media print,
