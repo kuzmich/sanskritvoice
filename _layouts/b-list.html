@@ -1,12 +1,17 @@
 ---
 layout: base
 ---
+<header class="header">
 {% include prefs.html %}
+</header>
 
+<main class="content">
 {%- for bhajan_slug in page.bhajans -%}
   {% assign bhajan = site.bhajans | where: "slug", bhajan_slug | first %}
   {%- include bhajan.html title=bhajan.title
                           text=bhajan.output
                           audio=bhajan.audio
+                          video=bhajan.video
                           slug=bhajan.slug -%}
 {% endfor %}
+</main>
