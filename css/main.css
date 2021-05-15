@@ -160,6 +160,9 @@ details {
 summary {
     background-color: #f7f6f3;
 }
+lite-youtube {
+	margin-top: 0.5em;
+}
 
 .accord {
     background-color: #ced1ca;
@@ -376,8 +379,7 @@ a.local-anchor {
 
     /* убираем навигацию, ссылки на баджаны и ссылки на аудио */
     body > header,
-    a.local-anchor,
-    article > section {
+    details {
       display: none;
     }
 }
