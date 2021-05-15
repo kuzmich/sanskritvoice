@@ -1,9 +1,10 @@
 function showAccords() {
-    $('#hide-accords-style').remove();
+    document.getElementById('hide-accords-style').remove();
 }
 
 function hideAccords() {
-    $('head').append(
+    document.head.insertAdjacentHTML(
+      'beforeend',
       '<style id="hide-accords-style">.accord {display: none;}</style>'
     );
 }
@@ -20,29 +21,35 @@ function loadPrefs() {
     document.getElementById('toggle-accords').checked = showAccs;
 }
 
-$(document).ready(function() {
-    loadPrefs();
+function toggleAccordsHandler(event) {
+  if (this.checked) {
+    showAccords();
+  } else {
+    hideAccords();
+  }
+  savePrefs();
+}
 
-    // показать/скрыть аккорды
-    $('#toggle-accords').on('click', function (event) {
-        if (this.checked) {
-          showAccords();
-        } else {
-          hideAccords();
-        }
-        savePrefs();
-    });
+function audioLinkHandler(event) {
+  event.preventDefault();
 
-    // показать и включить плеер
-    $('a.audio-link').on('click', function(event) {
-      event.preventDefault();
+  let player = document.getElementById('player');
 
-      var player = document.getElementById('player');
-      var audioLink = $(this);
+  // показать и включить плеер
+  player.classList.remove('hidden');
+  player.src = this.dataset.audioDownloadUrl;
+  player.play();
+}
 
-      $(player).removeClass('hidden');
 
-      player.src = audioLink.data('audioDownloadUrl');
-      player.play();
-    });
+document.addEventListener('DOMContentLoaded', (event) => {
+  loadPrefs();
+
+  // обработчик галочки "показать/скрыть аккорды"
+  document.getElementById('toggle-accords').onclick = toggleAccordsHandler;
+
+  // обработчик ссылок на аудио файл
+  for (let audioLink of document.querySelectorAll('a.audio-link')) {
+    audioLink.onclick = audioLinkHandler;
+  }
 });

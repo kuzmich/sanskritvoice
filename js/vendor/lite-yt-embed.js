@@ -11,41 +11,43 @@
  *   https://github.com/vb/lazyframe
  */
 class LiteYTEmbed extends HTMLElement {
-    constructor() {
-        super();
+    connectedCallback() {
+        this.videoId = this.getAttribute('videoid');
 
-        // Gotta encode the untrusted value
-        // https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html#rule-2---attribute-escape-before-inserting-untrusted-data-into-html-common-attributes
-        this.videoId = encodeURIComponent(this.getAttribute('videoid'));
+        let playBtnEl = this.querySelector('.lty-playbtn');
+        // A label for the button takes priority over a [playlabel] attribute on the custom-element
+        this.playLabel = (playBtnEl && playBtnEl.textContent.trim()) || this.getAttribute('playlabel') || 'Play';
 
         /**
          * Lo, the youtube placeholder image!  (aka the thumbnail, poster image, etc)
-         * There is much internet debate on the reliability of thumbnail URLs. Weak consensus is that you
-         * cannot rely on anything and have to use the YouTube Data API.
          *
-         * amp-youtube also eschews using the API, so they just try sddefault with a hqdefault fallback:
-         *   https://github.com/ampproject/amphtml/blob/6039a6317325a8589586e72e4f98c047dbcbf7ba/extensions/amp-youtube/0.1/amp-youtube.js#L498-L537
-         * For now I'm gonna go with this confident (lol) assertion: https://stackoverflow.com/a/20542029, though I'll use `i.ytimg` to optimize for origin reuse.
-         *
-         * Worth noting that sddefault is _higher_ resolution than hqdefault. Naming is hard. ;)
-         * From my own testing, it appears that hqdefault is ALWAYS there sddefault is missing for ~10% of videos
+         * See https://github.com/paulirish/lite-youtube-embed/blob/master/youtube-thumbnail-urls.md
          *
          * TODO: Do the sddefault->hqdefault fallback
          *       - When doing this, apply referrerpolicy (https://github.com/ampproject/amphtml/pull/3940)
          * TODO: Consider using webp if supported, falling back to jpg
          */
-        this.posterUrl = `https://i.ytimg.com/vi/${this.videoId}/hqdefault.jpg`;
-        // Warm the connection for the poster image
-        LiteYTEmbed.addPrefetch('preload', this.posterUrl, 'image');
-        // TODO: support dynamically setting the attribute via attributeChangedCallback
-    }
+        if (!this.style.backgroundImage) {
+          this.posterUrl = `https://i.ytimg.com/vi/${this.videoId}/hqdefault.jpg`;
+          // Warm the connection for the poster image
+          LiteYTEmbed.addPrefetch('preload', this.posterUrl, 'image');
 
-    connectedCallback() {
-        this.style.backgroundImage = `url("${this.posterUrl}")`;
+          this.style.backgroundImage = `url("${this.posterUrl}")`;
+        }
 
-        const playBtn = document.createElement('div');
-        playBtn.classList.add('lty-playbtn');
-        this.append(playBtn);
+        // Set up play button, and its visually hidden label
+        if (!playBtnEl) {
+            playBtnEl = document.createElement('button');
+            playBtnEl.type = 'button';
+            playBtnEl.classList.add('lty-playbtn');
+            this.append(playBtnEl);
+        }
+        if (!playBtnEl.textContent) {
+            const playBtnLabelEl = document.createElement('span');
+            playBtnLabelEl.className = 'lyt-visually-hidden';
+            playBtnLabelEl.textContent = this.playLabel;
+            playBtnEl.append(playBtnLabelEl);
+        }
 
         // On hover (or tap), warm up the TCP connections we're (likely) about to use.
         this.addEventListener('pointerover', LiteYTEmbed.warmConnections, {once: true});
@@ -64,14 +66,13 @@ class LiteYTEmbed extends HTMLElement {
      * Add a <link rel={preload | preconnect} ...> to the head
      */
     static addPrefetch(kind, url, as) {
-        const linkElem = document.createElement('link');
-        linkElem.rel = kind;
-        linkElem.href = url;
+        const linkEl = document.createElement('link');
+        linkEl.rel = kind;
+        linkEl.href = url;
         if (as) {
-            linkElem.as = as;
+            linkEl.as = as;
         }
-        linkElem.crossorigin = true;
-        document.head.append(linkElem);
+        document.head.append(linkEl);
     }
 
     /**
@@ -98,15 +99,27 @@ class LiteYTEmbed extends HTMLElement {
         LiteYTEmbed.preconnected = true;
     }
 
-    addIframe(){
-        const iframeHTML = `
-<iframe width="560" height="315" frameborder="0"
-  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
-  src="https://www.youtube-nocookie.com/embed/${this.videoId}?autoplay=1"
-></iframe>`;
-        this.insertAdjacentHTML('beforeend', iframeHTML);
+    addIframe() {
+        const params = new URLSearchParams(this.getAttribute('params') || []);
+        params.append('autoplay', '1');
+
+        const iframeEl = document.createElement('iframe');
+        iframeEl.width = 560;
+        iframeEl.height = 315;
+        // No encoding necessary as [title] is safe. https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html#:~:text=Safe%20HTML%20Attributes%20include
+        iframeEl.title = this.playLabel;
+        iframeEl.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+        iframeEl.allowFullscreen = true;
+        // AFAIK, the encoding here isn't necessary for XSS, but we'll do it only because this is a URL
+        // https://stackoverflow.com/q/64959723/89484
+        iframeEl.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(this.videoId)}?${params.toString()}`;
+        this.append(iframeEl);
+
         this.classList.add('lyt-activated');
+
+        // Set focus for a11y
+        this.querySelector('iframe').focus();
     }
 }
-// Register custome element
+// Register custom element
 customElements.define('lite-youtube', LiteYTEmbed);
