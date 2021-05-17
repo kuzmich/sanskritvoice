@@ -1,5 +1,6 @@
-/*! HTML5 Boilerplate v6.1.0 | MIT License | https://html5boilerplate.com/ */
+/*! HTML5 Boilerplate v8.0.0 | MIT License | https://html5boilerplate.com/ */
 
+/* main.css 2.1.0 | MIT License | https://github.com/h5bp/main.css#readme */
 /*
  * What follows is the result of much research on cross-browser styling.
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
@@ -83,17 +84,6 @@ textarea {
 }
 
 /* ==========================================================================
-   Browser Upgrade Prompt
-   ========================================================================== */
-
-.browserupgrade {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0.5em;
-}
-
-/* ==========================================================================
    Author's custom styles
    ========================================================================== */
 
@@ -172,14 +162,14 @@ lite-youtube {
 }
 
 #player {
-  position: fixed;
-  bottom: 0;
+    position: fixed;
+    bottom: 0;
 }
 
 /* ссылки на баджаны */
 a.local-anchor {
-  text-decoration: none;
-  color: #222;
+    text-decoration: none;
+    color: #222;
 }
 
 /* ==========================================================================
@@ -190,7 +180,8 @@ a.local-anchor {
  * Hide visually and from screen readers
  */
 
-.hidden {
+.hidden,
+[hidden] {
     display: none !important;
 }
 
@@ -203,33 +194,34 @@ a.local-anchor {
  *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
  */
 
-.visuallyhidden {
+.sr-only {
     border: 0;
-    clip: rect(0 0 0 0);
+    clip: rect(0, 0, 0, 0);
     height: 1px;
     margin: -1px;
     overflow: hidden;
     padding: 0;
     position: absolute;
+    white-space: nowrap;
     width: 1px;
-    white-space: nowrap; /* 1 */
+    /* 1 */
 }
 
 /*
- * Extends the .visuallyhidden class to allow the element
+ * Extends the .sr-only class to allow the element
  * to be focusable when navigated to via the keyboard:
  * https://www.drupal.org/node/897638
  */
 
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
+.sr-only.focusable:active,
+.sr-only.focusable:focus {
     clip: auto;
     height: auto;
     margin: 0;
     overflow: visible;
     position: static;
-    width: auto;
     white-space: inherit;
+    width: auto;
 }
 
 /*
@@ -252,13 +244,13 @@ a.local-anchor {
  *    `:before` to contain the top-margins of child elements.
  */
 
-.clearfix:before,
-.clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+.clearfix::before,
+.clearfix::after {
+    content: " ";
+    display: table;
 }
 
-.clearfix:after {
+.clearfix::after {
     clear: both;
 }
 
@@ -284,9 +276,9 @@ a.local-anchor {
 }
 
 @media print,
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 1.25dppx),
-       (min-resolution: 120dpi) {
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
     /* Style adjustments for high resolution devices */
 }
 
@@ -298,11 +290,11 @@ a.local-anchor {
 
 @media print {
     *,
-    *:before,
-    *:after {
-        background: transparent !important;
-        color: #000 !important; /* Black prints faster */
-        -webkit-box-shadow: none !important;
+    *::before,
+    *::after {
+        background: #fff !important;
+        color: #000 !important;
+        /* Black prints faster */
         box-shadow: none !important;
         text-shadow: none !important;
     }
@@ -312,11 +304,11 @@ a.local-anchor {
         text-decoration: underline;
     }
 
-    a[href]:after {
+    a[href]::after {
         content: " (" attr(href) ")";
     }
 
-    abbr[title]:after {
+    abbr[title]::after {
         content: " (" attr(title) ")";
     }
 
@@ -324,15 +316,15 @@ a.local-anchor {
      * Don't show links that are fragment identifiers,
      * or use the `javascript:` pseudo protocol
      */
-
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
+    a[href^="#"]::after,
+    a[href^="javascript:"]::after {
         content: "";
     }
 
     pre {
         white-space: pre-wrap !important;
     }
+
     pre,
     blockquote {
         border: 1px solid #999;
@@ -341,9 +333,8 @@ a.local-anchor {
 
     /*
      * Printing Tables:
-     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     * https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
      */
-
     thead {
         display: table-header-group;
     }
@@ -367,19 +358,19 @@ a.local-anchor {
 
     /* оборачиваем аккорды в {}, напр. {Dm} */
     span.accord {
-      margin: 0;
-      padding: 0;
+        margin: 0;
+        padding: 0;
     }
     span.accord::before {
-      content: " {";
+        content: " {";
     }
     span.accord::after {
-      content: "} ";
+        content: "} ";
     }
 
     /* убираем навигацию, ссылки на баджаны и ссылки на аудио */
     body > header,
     details {
-      display: none;
+        display: none;
     }
 }

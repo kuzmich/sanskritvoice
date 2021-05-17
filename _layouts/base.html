@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>{{ page.title }} - Голос Санскрита</title>
   <meta name="description" content="Баджаны, которые поют на сатсангах Искусства Жизни.">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,21 +21,18 @@
     .accord { display: none; }
   </style>
 
-  <script async src="/js/main.js"></script>
+  <script defer src="/js/main.js"></script>
+  <script defer src="/js/vendor/lite-yt-embed.js"></script>
+
+  {% include google-analytics.html -%}
 </head>
 
 <body>
-  {%- include upgrade-browser.html %}
-
   {{ content }}
 
   <audio id="player" class="hidden" controls>
     <p>Ваш браузер не поддерживает HTML5 аудио.</p>
   </audio>
-
-  <script src="/js/vendor/lite-yt-embed.js"></script>
-
-  {% include google-analytics.html %}
 </body>
 
 </html>
