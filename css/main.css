@@ -98,7 +98,7 @@ body {
     padding: 1em;
 }
 
-.header h1 {
+.header p.site-name {
     margin-top: 0.5em;
     margin-bottom: 0;
     font-family: 'Art of Living Script', serif;
@@ -108,8 +108,11 @@ body {
     color: #ff8400;
 }
 
-.header h1 + p {
+.header p + h1 {
     margin-top: 0.5em;
+    margin-bottom: 0.9em;
+    font-size: inherit;
+    font-weight: inherit;
 }
 
 .header ul {
