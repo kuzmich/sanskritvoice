@@ -1,10 +1,21 @@
     <nav>
-      <ul>
-        {%- for cat in site.data.categories -%}
-          {%- assign category_bhajans = site.bhajans | where: 'category', cat.name -%}
-          {% if category_bhajans.size > 0 %}
-            <li><a href="#{{ cat.slug }}">{{ cat.name }}-баджаны</a>
-          {%- endif -%}
-        {% endfor %}
-      </ul>
+      <details>
+        <summary>Список баджан</summary>
+        <div class="details-content">
+          <ul>
+            {%- for cat in site.data.categories -%}
+              {%- assign category_bhajans = site.bhajans | where: 'category', cat.name -%}
+              {% if category_bhajans.size > 0 %}
+                <li>
+                  <a href="#{{ cat.slug }}"><b>{{ cat.name }} баджаны</b></a>
+                  <ul>
+                  {%- for bhajan in category_bhajans -%}
+                    <li><a href="#{{ bhajan.slug | abs }}">{{ bhajan.title }}</a> <span class="bhajan-number">№{{ bhajan.slug | abs }}</span></li>
+                  {% endfor %}
+                  </ul>
+              {%- endif -%}
+            {% endfor %}
+          </ul>
+        </div>
+      </details>
     </nav>

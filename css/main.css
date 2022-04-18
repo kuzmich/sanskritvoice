@@ -110,9 +110,16 @@ body {
 
 .header p + h1 {
     margin-top: 0.5em;
-    margin-bottom: 0.9em;
+    margin-bottom: 1em;
     font-size: inherit;
     font-weight: inherit;
+}
+
+.header summary {
+    margin-left: -0.5em;
+}
+.header .details-content {
+    margin-top: 0.5em;
 }
 
 .header ul {
@@ -125,8 +132,16 @@ body {
     margin-bottom: 0.25em;
 }
 
+.header li ul {
+    margin-left: 1em;
+    margin-top: 0.25em;
+}
+
+.header .bhajan-number {
+    font-size: 0.75em;
+}
+
 .prefs {
-    margin-top: 1.75em;
     margin-bottom: 0.5em;
 }
 
@@ -136,11 +151,17 @@ body {
 
 section > h2 {
     color: #ff8400;
+    margin-bottom: 0;
 }
 
 /* уменьшим расстояние между названием баджаны и текстом */
 article > h3 {
-    margin-bottom: 0.5em;
+    display: inline-block;
+    margin-bottom: 0;
+}
+article .bhajan-number {
+    font-size: 1em;
+    color: gray;
 }
 article p:nth-of-type(1) {
     margin-top: 0.5em;
@@ -275,6 +296,13 @@ a.local-anchor {
     }
     .header {
         background-color: white;
+    }
+    .details-content {
+        padding: 0.5em;
+    }
+
+    .header summary {
+        margin-left: initial;
     }
 }
 

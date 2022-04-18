@@ -1,12 +1,14 @@
 {%- assign right_cbrace = '}' -%}
 {%- assign bid=include.slug | abs %}
     <article>
-      <h3 id="{{ bid }}">{{ bid }}. {{ include.title }}</h3>
+      <h3 id="{{ bid }}">{{ include.title }}</h3>
+      <span class="bhajan-number">№{{ bid }}</span>
       {{ include.text | replace: '{', '<span class="accord">' | replace: right_cbrace, '</span>' }}
 
       {%- if include.audio.size > 0 or include.video.size > 0 %}
         <details>
           <summary>Слушать</summary>
+          <div class="details-content">
           {%- for video in include.video %}
             <lite-youtube videoid="{{ video.ytid }}"></lite-youtube>
           {%- endfor %}
@@ -26,6 +28,7 @@
               {%- endfor %}
             </ul>
           {%- endif %}
+          </div>
         </details>
       {%- endif %}
     </article>
