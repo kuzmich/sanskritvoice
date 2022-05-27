@@ -99,7 +99,7 @@ body {
 }
 
 .header p.site-name {
-    margin-top: 0.5em;
+    margin-top: 0.25em;
     margin-bottom: 0;
     font-family: 'Art of Living Script', serif;
     font-weight: 500;
@@ -147,6 +147,12 @@ body {
 
 .content {
     padding: 0 1em 3em 1em;
+}
+
+.content > section:first-child {
+    /* Устраняем "выпадание" (margin collapsing)
+    верхнего отступа первого заголовка раздела */
+    border-top: 1px solid white;
 }
 
 section > h2 {
@@ -293,6 +299,7 @@ a.local-anchor {
     }
     main {
         background-color: white;
+        margin-top: 1em;
     }
     .header {
         background-color: white;
