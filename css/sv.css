@@ -1,0 +1,210 @@
+@font-face {
+    font-family: 'Art of Living Script';
+    font-weight: 500;
+    src: url('../fonts/gen/artofliving_script_regular.woff') format('woff');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Certa Sans';
+    font-weight: 300;
+    src: url('../fonts/gen/certa_sans_light.woff') format('woff');
+    font-display: swap;
+}
+
+:root {
+    --page-bg-c: hsl(45, 20%, 96%);  /* #f7f6f3 */
+    --content-bg-c: white;
+    --header-c: #ff8400;
+    --number-c: hsl(45, 2%, 41%);
+    --raduis: 0.6rem;
+    /* цвета из бренд-бука */
+    --2a3e4e-c: hsl(207, 30%, 24%); /* сизо-синий */
+    --acaba-c: hsl(45, 2%, 67%);  /* теплый серый #acaba8 */
+    --listen-bg-c: hsl(45, 20%, 96%);  /* теплый светло-серый #f7f6f3 */
+}
+
+/* Сброс некоторых дефолтных стилей */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+/* Глобальные стили */
+
+body {
+    max-width: 42rem;
+    margin-inline: auto;
+    font-family: 'Certa Sans', Arial, Helvetica, sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    background-color: var(--page-bg-c);
+}
+
+header, main {
+    padding: 1.5rem;
+    background-color: white;
+}
+
+/* Вертикальные расстояния */
+
+body > * + * {
+    margin-block-start: 2rem;
+}
+
+header > * + * {
+    margin-block-start: 1.5rem;
+}
+
+header > :first-child {
+    margin-block-start: 0.5rem;
+}
+
+header > h1 {
+    margin-block-start: 0;
+}
+
+header > nav {
+    margin-block-start: 2rem;
+}
+
+/* между категориями */
+main > * + * {
+    margin-block-start: 3rem;
+}
+
+/* между баджанами */
+section > * + * {
+    margin-block-start: 2rem;
+}
+
+article + article {
+    margin-block-start: 2.5rem;
+}
+
+/* внутри блока баджаны */
+article > * + * {
+    margin-block-start: 0.5rem;
+}
+
+article > details {
+    margin-block-start: 1rem;
+}
+
+/* Основные стили */
+
+details {
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    background-color: var(--page-bg-c);
+}
+
+details summary {
+    margin-inline-start: 0.5rem;
+}
+
+header {
+    border-radius: 0 0 var(--raduis) var(--raduis);
+}
+
+header .site-name {
+    font-family: 'Art of Living Script', serif;
+    font-weight: 500;
+    font-size: 3.5rem;
+    line-height: 0.8;
+    color: var(--header-c);
+}
+
+header h1 {
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+nav ul {
+    padding-inline-start: 0;
+    list-style-type: none;
+}
+
+nav details > ul {
+    padding-inline: 0.5rem;
+    padding-block-end: 0.5rem;
+}
+
+nav details > ul > li {
+    margin-block-start: 1rem;
+}
+
+nav li ul {
+    margin-inline-start: 1rem;
+}
+
+nav li ul li {
+    padding-block: 0.125rem;
+}
+
+.prefs input {
+    vertical-align: middle;
+}
+
+main {
+    border-radius: var(--raduis) var(--raduis) 0 0;
+}
+
+h2 {
+    border-block-end: 1px solid;
+    color: var(--header-c);
+}
+
+h3 {
+    display: inline;
+}
+
+.bhajan-number {
+    color: var(--number-c);
+    font-size: 0.8em;
+}
+
+.accord {
+    background-color: #ced1ca;
+    margin: 0 0.2em;
+    padding: 0 0.2em;
+    font-size: 0.9em;
+}
+
+.listen-list {
+    padding: 0.5rem;
+}
+
+.listen-list > * + * {
+    margin-block-start: 1rem;
+}
+
+@media only screen and (max-width: 42em) {
+    header {
+        border-radius: 0;
+        background-color: var(--page-bg-c);
+    }
+
+    main {
+        border-radius: 0;
+        margin-block-start: 0;
+    }
+
+    nav details {
+        padding: 0;
+    }
+
+    nav details summary {
+        margin-inline-start: 0;
+    }
+
+    nav details > ul {
+        padding: 0;
+    }
+}

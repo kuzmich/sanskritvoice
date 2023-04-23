@@ -8,7 +8,7 @@
       {%- if include.audio.size > 0 or include.video.size > 0 %}
         <details>
           <summary>Слушать</summary>
-          <div class="details-content">
+          <div class="listen-list">
           {%- for video in include.video %}
             <lite-youtube videoid="{{ video.ytid }}"></lite-youtube>
           {%- endfor %}
