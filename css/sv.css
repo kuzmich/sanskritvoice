@@ -65,9 +65,13 @@ body {
     background-color: var(--page-bg-c);
 }
 
-header, main {
+header, main, footer {
     padding: 1.5rem;
     background-color: var(--content-bg-c);
+}
+
+main {
+    padding-block: 3.5rem;
 }
 
 /* Вертикальные расстояния */
@@ -95,10 +99,6 @@ header > nav {
 /* между категориями */
 main > * + * {
     margin-block-start: 3rem;
-}
-
-main > :first-child {
-    margin-block-start: 2rem;
 }
 
 /* между баджанами */
@@ -178,7 +178,7 @@ nav li ul li {
 }
 
 main {
-    border-radius: var(--raduis) var(--raduis) 0 0;
+    border-radius: var(--raduis);
 }
 
 h2 {
@@ -210,13 +210,21 @@ h3 {
     margin-block-start: 1rem;
 }
 
+footer {
+    border-radius: var(--raduis) var(--raduis) 0 0;
+}
+
+footer address {
+    text-align: center;
+}
+
 @media only screen and (max-width: 42em) {
-    header {
+    header, footer {
         border-radius: 0;
         background-color: var(--page-bg-c);
     }
 
-    main {
+    main, footer {
         border-radius: 0;
         margin-block-start: 0;
     }
