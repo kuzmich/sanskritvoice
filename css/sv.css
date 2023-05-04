@@ -30,6 +30,8 @@
     --page-bg-c: hsl(45, 20%, 93%);
     --content-bg-c: hsl(45, 20%, 98%);
     --text-c: hsl(207, 30%, 20%);
+    --link-c: hsl(207, 100%, 30%);
+    --link-active-c: hsl(207, 100%, 40%);
     --header-c: #ff8400;
     --number-c: hsl(45, 2%, 41%);
     --raduis: 0.6rem;
@@ -72,6 +74,18 @@ header, main, footer {
 
 main {
     padding-block: 3.5rem;
+}
+
+a {
+    color: var(--link-c);
+}
+
+a:hover {
+    color: var(--link-active-c);
+}
+
+a:active {
+    color: var(--header-c);
 }
 
 /* Вертикальные расстояния */
