@@ -5,30 +5,42 @@
     font-display: swap;
 }
 
+/* @font-face {
+    font-family: 'Certa Sans';
+    font-weight: 200 400;
+    src: url('../fonts/gen/certa_sans_extra_light.woff2') format('woff2');
+    font-display: swap;
+} */
+
 @font-face {
     font-family: 'Certa Sans';
-    font-weight: normal;
+    font-weight: 300 400;
     src: url('../fonts/gen/certa_sans_light.woff2') format('woff2');
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Certa Sans';
-    font-weight: bold;
+    font-weight: 500 700;
     src: url('../fonts/gen/certa_sans_medium.woff2') format('woff2');
     font-display: swap;
 }
 
 :root {
-    --page-bg-c: hsl(45, 20%, 96%);  /* #f7f6f3 */
-    --content-bg-c: white;
+    --page-bg-c: hsl(45, 20%, 93%);
+    --content-bg-c: hsl(45, 20%, 98%);
+    --text-c: hsl(207, 30%, 20%);
     --header-c: #ff8400;
     --number-c: hsl(45, 2%, 41%);
     --raduis: 0.6rem;
+
     /* цвета из бренд-бука */
-    --2a3e4e-c: hsl(207, 30%, 24%); /* сизо-синий */
-    --acaba-c: hsl(45, 2%, 67%);  /* теплый серый #acaba8 */
-    --listen-bg-c: hsl(45, 20%, 96%);  /* теплый светло-серый #f7f6f3 */
+    /* сизо-синий - для дополнительного акцентного фона */
+    --2a3e4e-c: hsl(207, 30%, 24%);
+    /* теплый серый - для наборного шрифта (подписи, сноски), для разделительных линий */
+    --acaba8-c: hsl(45, 2%, 67%);
+    /* теплый светло-серый - для фона — когда нужно разбавить белый */
+    --f7f6f3-bg-c: hsl(45, 20%, 96%);
 }
 
 /* Сброс некоторых дефолтных стилей */
@@ -46,15 +58,16 @@
 body {
     max-width: 42rem;
     margin-inline: auto;
-    font-family: 'Certa Sans', Arial, Helvetica, sans-serif;
+    font-family: 'Certa Sans', system-ui, sans-serif;
     font-size: 1.1rem;
     line-height: 1.5;
+    color: var(--text-c);
     background-color: var(--page-bg-c);
 }
 
 header, main {
     padding: 1.5rem;
-    background-color: white;
+    background-color: var(--content-bg-c);
 }
 
 /* Вертикальные расстояния */
@@ -82,6 +95,10 @@ header > nav {
 /* между категориями */
 main > * + * {
     margin-block-start: 3rem;
+}
+
+main > :first-child {
+    margin-block-start: 2rem;
 }
 
 /* между баджанами */
@@ -119,9 +136,10 @@ header {
 }
 
 header .site-name {
-    font-family: 'Art of Living Script', serif;
+    font-family: 'Art of Living Script', Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
     font-weight: 500;
     font-size: 3.5rem;
+    /* size-adjust: 50%; */
     line-height: 0.8;
     color: var(--header-c);
 }
