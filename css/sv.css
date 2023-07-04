@@ -29,6 +29,7 @@
 :root {
     --page-bg-c: hsl(45, 20%, 93%);
     --content-bg-c: hsl(45, 20%, 98%);
+    --accord-bg-c: hsl(45, 20%, 86%);
     --text-c: hsl(207, 30%, 20%);
     --link-c: hsl(207, 100%, 30%);
     --link-active-c: hsl(207, 100%, 40%);
@@ -210,7 +211,7 @@ h3 {
 }
 
 .accord {
-    background-color: #ced1ca;
+    background-color: var(--accord-bg-c);
     margin: 0 0.2em;
     padding: 0 0.2em;
     font-size: 0.9em;
